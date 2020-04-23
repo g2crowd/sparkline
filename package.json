@@ -1,6 +1,9 @@
 {
-  "name": "@fnando/sparkline",
-  "version": "0.3.10",
+  "name": "@g2crowd/sparkline",
+  "version": "0.1.0",
+  "contributors": [
+    "Nando Vieira <@stellar> (https://nandovieira.com)"
+  ],
   "files": [
     "src/sparkline.js",
     "dist/**/*",
@@ -8,15 +11,27 @@
   ],
   "main": "dist/sparkline.js",
   "module": "dist/sparkline.commonjs2.js",
+  "@pika/pack": {
+    "pipeline": [
+      [
+        "@pika/plugin-standard-pkg"
+      ],
+      [
+        "@pika/plugin-build-web"
+      ]
+    ]
+  },
   "scripts": {
     "test": "mocha --require @babel/register \"test/**/*_test.js\"",
     "js:dist:commonjs2": "LIBRARY_TARGET=commonjs2 webpack",
     "js:dist:browser": "LIBRARY_TARGET=var webpack",
-    "dist": "rm -rf dist/* && yarn test && yarn js:dist:browser && yarn js:dist:commonjs2"
+    "dist": "rm -rf dist/* && yarn test && yarn js:dist:browser && yarn js:dist:commonjs2",
+    "build": "pack build",
+    "publish": "pack publish"
   },
   "description": "Generate SVG sparklines with JavaScript without any external dependency.",
   "license": "MIT",
-  "repository": "https://github.com/fnando/sparkline",
+  "repository": "https://github.com/g2crowd/sparkline",
   "private": false,
   "devDependencies": {
     "@babel/core": "^7.2.0",
@@ -29,6 +44,8 @@
     "babel-loader": "8.0.x",
     "jsdom": "^13.0.0",
     "mocha": "^5.2.0",
+    "@pika/plugin-build-web": "^0.9.2",
+    "@pika/plugin-standard-pkg": "^0.9.2",
     "snap-shot": "2.17.x",
     "uglifyjs-webpack-plugin": "2.0.x",
     "webpack": "^4.27.1",
