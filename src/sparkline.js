@@ -1,5 +1,5 @@
 function getY(max, height, diff, value) {
-  return parseFloat((height - (value * height / max) + diff).toFixed(2));
+  return parseFloat((height - (value * height / (max || 1)) + diff).toFixed(2));
 }
 
 function removeChildren(svg) {
@@ -80,7 +80,7 @@ export function sparkline(svg, entries, options) {
 
   // The maximum value. This is used to calculate the Y coord of
   // each sparkline datapoint.
-  const max = Math.max(...values);
+  const max = Math.max(options.minScale || 0,...values);
 
   // Some arbitrary value to remove the cursor and spot out of
   // the viewing canvas.
