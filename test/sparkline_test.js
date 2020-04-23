@@ -3,7 +3,7 @@ import snapshot from "snap-shot";
 import { JSDOM } from "jsdom";
 import {describe, it} from "mocha";
 
-import sparkline from "../src/sparkline";
+import sparkline from "../src/index";
 
 function createSVG(width, height, strokeWidth) {
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
